@@ -1,0 +1,111 @@
+<button class="add_btn" (click)="openDialog(addTransportadoraTemplat)">
+    <mat-icon>add</mat-icon>
+</button>
+
+<div class="list_product">
+
+    <mat-card class="card_produt" *ngFor='let transportadora of listTransportadora'>
+        <mat-card-content>
+            <div class="product_detalhes">
+                <div class="product_item w-100">
+                    <p class="product_title">Nome:</p>
+                    <p class="product_descript">{{transportadora.name}}</p>
+                </div>
+                <div class="product_item w-100">
+                    <p class="product_title">Razão social:</p>
+                    <p class="product_descript">{{transportadora.social_reason}}</p>
+                </div>
+                <div class="product_item w-100">
+                    <p class="product_title">CNPJ:</p>
+                    <p class="product_descript">{{transportadora.CNPJ}}</p>
+                </div>
+            </div>
+        </mat-card-content>
+        <hr>
+        <mat-card-actions align='end' class="pt-0">
+            <button mat-button (click)='openDialog(addTransportadoraTemplat, transportadora)'>Editar</button>
+            <button mat-button (click)='openDialog(retiradaTemplat, transportadora)'>Remover</button>
+        </mat-card-actions>
+    </mat-card>
+
+</div>
+
+<ng-template #retiradaTemplat>
+    <h2 mat-dialog-title>Retirada do Produto</h2>
+    <mat-dialog-content class="mat-typography">
+
+        <h4>Deseja realmente excluir {{transportadoraSelect.name}}</h4>
+
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Não</button>
+        <button mat-button (click)='delet()'>Sim</button>
+    </mat-dialog-actions>
+</ng-template>
+
+<ng-template #addTransportadoraTemplat>
+    <h2 mat-dialog-title>Nova transportadora</h2>
+    <mat-dialog-content class="mat-typography">
+
+        <mat-vertical-stepper [linear]="true" #stepper>
+            <mat-step [stepControl]="main_dataFormGroup" state="phone">
+                <form [formGroup]="main_dataFormGroup">
+                    <ng-template matStepLabel>Dados iniciais</ng-template>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Nome</mat-label>
+                        <input matInput [formControl]="nomeFormControl" [errorStateMatcher]="matcher"
+                            placeholder="Ex. Trans 1" required>
+                        <mat-error *ngIf="nomeFormControl.hasError('required')">
+                            Nome é <strong>obrigatorio</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Razão social</mat-label>
+                        <input matInput [formControl]="razaoFormControl" [errorStateMatcher]="matcher"
+                            placeholder="Transportadora SIO" required>
+                        <mat-error *ngIf="razaoFormControl.hasError('required')">
+                            Razão social é <strong>obrigatorio</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <div align='end'>
+                        <button mat-button matStepperNext>Proximo</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="complementoFormGroup" state="chat">
+                <form [formGroup]="complementoFormGroup" (ngSubmit)="Submit()">
+                    <ng-template matStepLabel>Dados adicionais</ng-template>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>CNPJ</mat-label>
+                        <input matInput [formControl]="cnpjFormControl" [errorStateMatcher]="matcher"
+                            placeholder="00.000.000/0000-00" required>
+                        <mat-error *ngIf="cnpjFormControl.hasError('required')">
+                            CNPJ é <strong>obrigatorio</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <div align='end'>
+                        <button mat-button matStepperPrevious>Voltar</button>
+                        <button mat-button matStepperNext>Finalizar</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Resultado</ng-template>
+                <p>{{(transportadoraSelect._id) ? 'Transportadora alterada com sucesso' : 'Nova transportadora cadastrada'}}.</p>
+                <div align='end'>
+                    <button mat-button (click)="closeDialog()">Fechar</button>
+                </div>
+            </mat-step>
+
+            <ng-template matStepperIcon="phone">
+                <mat-icon>call_end</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="chat">
+                <mat-icon>forum</mat-icon>
+            </ng-template>
+        </mat-vertical-stepper>
+
+
+    </mat-dialog-content>
+</ng-template>

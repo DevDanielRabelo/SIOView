@@ -1,0 +1,37 @@
+<main class="dark">
+
+    <div class="container_login">
+        <div class="content_login">
+            <div class="form_container">
+                <form class="form_login" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+                    <div class="form_header">
+                        <!-- <img src="./assets/image/logo.png"> -->
+                    </div>
+                    <div class="form_content">
+                        <div class="form_group">
+                            <input type="text" class="form_control" formControlName="email" placeholder=" " />
+                            <label>E-mail</label>
+                        </div>
+                        <div class="form_group">
+                            <input type="password" class="form_control" formControlName="password" placeholder=" " />
+                            <label>Senha</label>
+                        </div>
+                        <div class="form_functions">
+                            <input type="checkbox" class="form_control_checkbox"> Lembrar
+                            <button class="btn btn_send ml-auto" [disabled]="!loginForm.valid">{{text}}</button>
+                        </div>
+                        <!-- <a href="#" class="form_link">Esqueci minha senha</a> -->
+                    </div>
+                </form>
+                <p class="text_form">
+                    Ao criar sua conta informando os dados acima, entendemos que você está concordando com os Termos de
+                    Uso do
+                    Sistema®.
+                </p>
+            </div>
+            <div class="anima_content">
+                <!-- <img src="./assets/image/sistema-print.png"> -->
+            </div>
+        </div>
+    </div>
+</main>

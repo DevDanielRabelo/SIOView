@@ -1,0 +1,159 @@
+:host {
+    width: 100%
+  }
+  .container_login {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #191919
+  }
+  .content_login {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 805px;
+    height: 550px;
+    background: #242424;
+    border-radius: .3rem
+  }
+  .form_container {
+    position: relative;
+    width: 400px;
+    height: 410px;
+    left: -150px
+  }
+  .form_login {
+    display: flex;
+    flex-direction: column;
+    background: #363636;
+    box-shadow: 0 .3rem .5rem rgba(0,0,0,.15);
+    border-radius: .6rem;
+    padding: 2rem 2.8rem
+  }
+  .form_header {
+    margin-bottom: 1.5rem
+  }
+  .form_header img {
+    display: block;
+    margin: 0 auto
+  }
+  .form_content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px
+  }
+  .form_link {
+    margin-top: 10px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: .75rem;
+    line-height: 1.1rem;
+    color: #b5b3b3
+  }
+  .form_login .form_group {
+    position: relative;
+    padding-top: 13px;
+    margin-bottom: 15px
+  }
+  .form_login .form_group .form_control {
+    width: 100%;
+    font-size: .8rem;
+    background-color: transparent;
+    height: 20px;
+    color: #fff;
+    border: 0;
+    border-bottom: 2px solid #b5b3b3;
+    outline: 0;
+    transition: all .2s;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s;
+    -webkit-appearance: none;
+    margin-bottom: 5px
+  }
+  .form_login .form_group .form_control:focus {
+    border-bottom: 2px solid #fff
+  }
+  .form_login .form_group .form_control::placeholder {
+    color: transparent
+  }
+  .form_login .form_group label {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: .8rem;
+    color: #b5b3b3;
+    margin-top: 10px;
+    transition: all .2s;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s
+  }
+  .form_login .form_group .form_control:focus + label,
+  .form_login .form_group .form_control:not(:placeholder-shown) + label {
+    margin-top: -5px
+  }
+  .form_functions {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    color: #000;
+    font-size: .75rem
+  }
+  .form_control_checkbox {
+    all: unset;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 1px solid #191919;
+    box-sizing: border-box;
+    border-radius: 2px;
+    margin-right: 5px
+  }
+  .form_control_checkbox:checked {
+    background-color: #c4c4c4
+  }
+  .btn_send {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 84px;
+    height: 28px;
+    margin-left: auto;
+    font-weight: 500;
+    font-size: .75rem;
+    color: #c4c4c4;
+    background: #191919;
+    box-shadow: 0 .3rem .5rem rgba(0,0,0,.15);
+    border: none;
+    border-radius: 30px;
+    transition: all .2s;
+    -webkit-transition: all .2s;
+    -moz-transition: all .2s
+  }
+  .btn_send:hover {
+    transform: scale(1.05);
+    background: #242424
+  }
+  .text_form {
+    display: flex;
+    width: 340px;
+    margin: 20px auto;
+    align-items: center;
+    text-align: center;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 15px;
+    color: #c4c4c4
+  }
+  .anima_content {
+    position: relative;
+    margin-right: -150px
+  }
+  .anima_content img {
+    width: 100%
+  }

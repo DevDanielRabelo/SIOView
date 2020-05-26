@@ -1,1 +1,166 @@
-/* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+::-moz-selection,
+::selection
+:focus {
+  background: 0 0
+}
+::-webkit-scrollbar{
+  display: none
+}
+
+#toolbarMenu {
+  cursor: pointer;
+  margin-right: 20px
+}
+#mainToolbar .toolbar-spacer {
+  flex: 1 1 auto
+}
+#mainToolbar .toolbar-icon {
+  cursor: pointer;
+  margin: 0 8px
+}
+#sidenavContainer {
+  margin-top: 64px
+}
+#sidenav {
+  width: 240px;
+  transition: all .5s linear;
+  box-shadow: 0 0 1.2rem rgba(0,0,0,.1);
+}
+.mat-drawer-content {
+  padding: 15px;
+  transition: all .5s linear
+}
+.sidenav_user {
+  height: 50px
+}
+#sidenav.menu-close {
+  width: 70px
+}
+#sidenav.menu-open {
+  width: 240px
+}
+#sidenav.menu-open .mat-card-header-text {
+  width: 151px
+}
+#sidenav.menu-open .mat-card-title {
+  width: 151px
+}
+#sidenav.menu-close .mat-card-header-text {
+  display: none
+}
+#sidenav .avatar {
+  background-image: url(http://i.pravatar.cc/300);
+  background-size: cover
+}
+#sidenav .mat-list-item-content {
+  padding: 0
+}
+#sidenav .menu-item {
+  width: 100%;
+  border-radius: 0;
+  text-align: left;
+  padding: 10px
+}
+#sidenav .menu-item:hover {
+  background: #e1e1e2
+}
+#sidenav .menu-item mat-icon {
+  margin-right: 25px;
+  margin-left: 12px
+}
+.dash-list h3 {
+  padding: 12px
+}
+.mat-drawer-inner-container {
+  overflow-x: hidden!important
+}
+.mat-drawer-side {
+  border: 0;
+  box-shadow: 0 0 1.2rem rgba(0,0,0,.1)
+}
+.mat-list-base {
+  padding-top: 0
+}
+.cdk-overlay-pane{
+  min-width: 80vw;
+}
+.mat-form-field{
+  width: 100%;
+  margin-top: 10px;
+}
+.mat-form-field-appearance-fill .mat-form-field-flex{
+  background-color: transparent !important;
+}
+.w-100{
+  width: 100% !important;
+}
+.pt-0{
+  padding-top: 0 !important;
+}
+.add_btn{
+  position: fixed;
+  top: 32px;
+  right: 16px;
+  transform: translateY(-50%);
+  border: 0;
+  background: 0;
+  color: #fff;
+  z-index: 2;
+  cursor: pointer;
+}
+
+.list_product{
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+width: 100%;
+margin-bottom: 15px;
+}
+.card_produt{
+  width: 90%;
+  margin-bottom: 15px;
+}
+
+mat-card-content{
+  margin-bottom: 0;
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+.product_detalhes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+}
+.product_item{
+  display: flex;
+  flex-direction: row;
+  width: 45%;
+}
+.product_title{
+  cursor: pointer;
+  font-weight: 500;
+  margin-right: 5px;
+  color: rgba(0,0,0,.7);
+}
+.text-center{
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+
+@media(min-width:1200px){
+  .card_produt{
+    width: calc((90% / 3) - 15px);
+    margin-bottom: 15px;
+    margin-right: 15px;
+  }
+}

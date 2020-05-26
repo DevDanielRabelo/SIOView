@@ -1,0 +1,172 @@
+<button class="add_btn" (click)='openDialog(addUserTemplat)'>
+    <mat-icon>add</mat-icon>
+</button>
+<!-- 
+<div *ngIf='listPordutos.length == 0'>
+    <h4 class="text-center">Não existe produtos</h4>
+</div> -->
+
+<div class="list_product">
+
+    <mat-card class="card_produt" *ngFor='let product of listPordutos'>
+
+        <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+
+        <mat-card-content>
+            <div class="product_detalhes">
+                <div class="product_item">
+                    <p class="product_title">Nome:</p>
+                    <p class="product_descript">{{product.name}}</p>
+                </div>
+                <div class="product_item">
+                    <p class="product_title">Lote:</p>
+                    <p class="product_descript">{{product.lote}}</p>
+                </div>
+                <div class="product_item">
+                    <p class="product_title">Peso:</p>
+                    <p class="product_descript">{{product.peso}}</p>
+                </div>
+                <div class="product_item">
+                    <p class="product_title">Tipo:</p>
+                    <p class="product_descript">{{product.tipo}}</p>
+                </div>
+            </div>
+            <hr>
+            <div class="product_detalhes" *ngIf="product.shipping_company">
+                <div class="product_item w-100">
+                    <p class="product_title">Transportadora:</p>
+                    <p class="product_descript">{{product.shipping_company.name}}</p>
+                </div>
+                <div class="product_item">
+                    <p class="product_title">Nota Fiscal:</p>
+                    <p class="product_descript">{{product.invoice}}</p>
+                </div>
+                <div class="product_item">
+                    <p class="product_title">Data de retirada:</p>
+                    <p class="product_descript">{{product.data_withdrawal | date:'dd/MM'}}</p>
+                </div>
+            </div>
+        </mat-card-content>
+        <mat-card-actions align='end' class="pt-0">
+            <button mat-button (click)='openDialog(retiradaTemplat, product)' *ngIf="!product.shipping_company">Fazer
+                Retirada</button>
+        </mat-card-actions>
+    </mat-card>
+
+</div>
+
+<ng-template #retiradaTemplat>
+    <h2 mat-dialog-title>Retirada do Produto</h2>
+    <mat-dialog-content class="mat-typography">
+
+        <mat-vertical-stepper [linear]="true" #stepper>
+            <mat-step [stepControl]="retiradaFrom" state="phone">
+                <form [formGroup]="retiradaFrom" (ngSubmit)='Submit()'>
+                    <ng-template matStepLabel>Dados para retirada</ng-template>
+                    <mat-form-field class="example-full-width">
+                        <mat-select [formControl]="ShippingCompanyControl" [errorStateMatcher]="matcher">
+                            <mat-option [value]="0" disabled>
+                                Selecione transportadora
+                            </mat-option>
+                            <mat-option *ngFor="let transportadora of listTransportadora" [value]="transportadora._id">
+                                {{transportadora.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Nome do entregador</mat-label>
+                        <input matInput [formControl]="nameCompanyControl" [errorStateMatcher]="matcher"
+                            placeholder="Rodrigo" required>
+                        <mat-error *ngIf="nameCompanyControl.hasError('required')">
+                            Nome do entregador é <strong>obrigatório</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Nota fiscal</mat-label>
+                        <input matInput [formControl]="invoiceControl" [errorStateMatcher]="matcher"
+                            placeholder="10258963" required>
+                        <mat-error *ngIf="invoiceControl.hasError('required')">
+                            Nota fiscal é <strong>obrigatória</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <div align='end'>
+                        <button mat-button matStepperNext>Finalizar</button>
+                    </div>
+                </form>
+            </mat-step>
+        </mat-vertical-stepper>
+
+
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+        <button mat-button mat-dialog-close>Cancelar</button>
+    </mat-dialog-actions>
+</ng-template>
+
+<ng-template #addUserTemplat>
+    <h2 mat-dialog-title>Novo Produto</h2>
+    <mat-dialog-content class="mat-typography">
+
+        <mat-vertical-stepper [linear]="true" #stepper>
+            <mat-step [stepControl]="main_dataFormGroup" state="phone">
+                <form [formGroup]="main_dataFormGroup">
+                    <ng-template matStepLabel>Dados iniciais</ng-template>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Nome do produto</mat-label>
+                        <input matInput [formControl]="nomeFormControl" [errorStateMatcher]="matcher"
+                            placeholder="Ex. Produto 1" required>
+                        <mat-error *ngIf="nomeFormControl.hasError('required')">
+                            Nome é <strong>obrigatorio</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Lote</mat-label>
+                        <input matInput [formControl]="lotelFormControl" [errorStateMatcher]="matcher"
+                            placeholder="123456" required>
+                        <mat-error *ngIf="lotelFormControl.hasError('required')">
+                            Lote é <strong>obrigatorio</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <div align='end'>
+                        <button mat-button matStepperNext>Proximo</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="complementoFormGroup" state="chat">
+                <form [formGroup]="complementoFormGroup" (ngSubmit)="Submit()">
+                    <ng-template matStepLabel>Dados adicionais</ng-template>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Peso</mat-label>
+                        <input matInput type="number" [formControl]="pesoFormControl" [errorStateMatcher]="matcher" placeholder="165">
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Tipo</mat-label>
+                        <input matInput [formControl]="tipoFormControl" [errorStateMatcher]="matcher"
+                            placeholder="Alimento">
+                    </mat-form-field>
+                    <div align='end'>
+                        <button mat-button matStepperPrevious>Voltar</button>
+                        <button mat-button matStepperNext type="submit">Finalizar</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Resultado</ng-template>
+                <p>Novo Produto Cadastrado.</p>
+                <div align='end'>
+                    <button mat-button (click)="closeDialog()">Fechar</button>
+                    <button mat-button (click)="stepper.reset()">Cadastrar novo produto</button>
+                </div>
+            </mat-step>
+
+            <ng-template matStepperIcon="phone">
+                <mat-icon>call_end</mat-icon>
+            </ng-template>
+            <ng-template matStepperIcon="chat">
+                <mat-icon>forum</mat-icon>
+            </ng-template>
+        </mat-vertical-stepper>
+
+
+    </mat-dialog-content>
+</ng-template>
