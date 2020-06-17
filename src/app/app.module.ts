@@ -18,6 +18,8 @@ import { EmployeesComponent } from './pages/employees/employees.component';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { ProductService } from './services/product.service';
 import { ShippingCompanyService } from './services/shipping_company.service';
+import { EmployeesService } from './services/employees.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,6 +43,7 @@ import { ShippingCompanyService } from './services/shipping_company.service';
     AuthGuard,
     UserService,
     ProductService,
+    EmployeesService,
     ShippingCompanyService,
     { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'fill' } },
   ],

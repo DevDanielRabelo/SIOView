@@ -44,10 +44,10 @@
         </mat-list-item>
 
         <mat-list-item title="Configurações">
-          <a class="menu-item" mat-flat-button>
-            <mat-icon>settings_application</mat-icon>
-            Configurações
-          </a>
+          <button class="menu-item"  mat-flat-button (click)="logoff()">
+            <mat-icon>login</mat-icon>
+            Sair
+          </button>
         </mat-list-item>
 
       </mat-list>

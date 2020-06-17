@@ -1,1 +1,8 @@
-<p>employees</p>
+<table>
+    <tr>
+        <th>Nome</th>
+    </tr>
+    <tr *ngFor='let item of listFuncionarios'>
+        <td>{{item.main_data.name}} {{item.main_data.last_name}}</td>
+    </tr>
+</table>
